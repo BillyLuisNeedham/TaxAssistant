@@ -3,6 +3,9 @@ plugins {
     id 'kotlin-android'
 }
 
+apply plugin: 'kotlin-kapt'
+
+
 android {
     compileSdkVersion 30
 
@@ -30,7 +33,8 @@ android {
         jvmTarget = '1.8'
     }
     buildFeatures {
-        viewBinding true
+        dataBinding true
+
     }
     testOptions {
         unitTests {
@@ -56,4 +60,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     androidTestImplementation('androidx.test:runner:1.3.0')
     androidTestImplementation('androidx.test:rules:1.3.0')
+    kapt 'groupId:artifactId:1.5.10'
+
 }
