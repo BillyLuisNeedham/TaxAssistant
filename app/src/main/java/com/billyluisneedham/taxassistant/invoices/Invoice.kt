@@ -1,4 +1,4 @@
-package com.billyluisneedham.taxassistant.models
+package com.billyluisneedham.taxassistant.invoices
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
