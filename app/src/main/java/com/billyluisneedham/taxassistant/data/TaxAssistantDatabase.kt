@@ -9,7 +9,7 @@ import com.billyluisneedham.taxassistant.expenses.ExpenseDao
 
 @Database(entities = [Expense::class], version = 1)
 abstract class TaxAssistantDatabase : RoomDatabase() {
-    abstract fun expensesDao(): ExpenseDao
+    abstract fun getExpensesDao(): ExpenseDao
 
     companion object {
         private const val DATABASE_NAME = "Tax-Assistant-Database.db"
