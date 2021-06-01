@@ -14,5 +14,5 @@ data class Invoice(
     val amount: Double,
     @ColumnInfo(name = "has_been_paid") val hasBeenPaid: Boolean = false,
     @ColumnInfo(name = "invoice_url") val invoiceUrl: String,
-    val notes: String,
+    val notes: String? = null,
 )
