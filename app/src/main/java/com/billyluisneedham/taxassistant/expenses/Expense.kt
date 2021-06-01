@@ -12,5 +12,5 @@ data class Expense(
     @ColumnInfo(name = "date_time_stamp") val dateTimeStamp: Long,
     val amount: Double,
     @ColumnInfo(name = "receipt_url") val receiptUrl: String,
-    val notes: String
+    val notes: String? = null
 )
