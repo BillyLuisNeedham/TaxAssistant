@@ -34,9 +34,10 @@ class ExpenseRepositoryTest {
         val flow = flow {
             emit(listOf(expense))
         }
-    every {
-        mockDao.getAll()
-    } returns flow
+
+        every {
+            mockDao.getAll()
+        } returns flow
 
         val result = expenseRepository.getAllExpenses().first()
 
