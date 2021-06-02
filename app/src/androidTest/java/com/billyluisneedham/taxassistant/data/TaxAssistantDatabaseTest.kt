@@ -8,6 +8,7 @@ import com.billyluisneedham.taxassistant.expenses.Expense
 import com.billyluisneedham.taxassistant.expenses.ExpenseDao
 import com.billyluisneedham.taxassistant.invoices.Invoice
 import com.billyluisneedham.taxassistant.invoices.InvoiceDao
+import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.runBlocking
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.`is`
@@ -48,7 +49,8 @@ class TaxAssistantDatabaseTest {
         )
         expenseDao.insert(expense)
         val expenses = expenseDao.getAll()
-        assertThat(expenses.contains(expense), `is`(true))
+        val expenseList = expenses.firstOrNull()
+        assertThat(expenseList?.contains(expense), `is`(true))
     }
 
     @Test
