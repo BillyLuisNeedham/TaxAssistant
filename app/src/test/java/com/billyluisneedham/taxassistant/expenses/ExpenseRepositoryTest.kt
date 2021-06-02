@@ -1,7 +1,10 @@
 package com.billyluisneedham.taxassistant.expenses
 
-import io.mockk.coEvery
+import io.mockk.coVerify
+import io.mockk.every
 import io.mockk.mockk
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.runBlocking
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.core.Is.`is`
@@ -27,12 +30,24 @@ class ExpenseRepositoryTest {
 
     @Test
     fun getAllExpensesCallsReturnsAllExpensesInDatabase() = runBlocking {
-    coEvery {
+        val flow = flow {
+            emit(listOf(expense))
+        }
+    every {
         mockDao.getAll()
-    } returns listOf(expense)
+    } returns flow
 
-        val result = expenseRepository.getAllExpenses()
+        val result = expenseRepository.getAllExpenses().first()
 
         assertThat(result, `is`(listOf(expense)))
+    }
+
+    @Test
+    fun createExpenseCreatesExpenseInDatabase() = runBlocking {
+        expenseRepository.createExpense(expense)
+
+        coVerify {
+            mockDao.insert(expense)
+        }
     }
 }
