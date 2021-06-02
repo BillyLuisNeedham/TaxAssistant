@@ -1,5 +1,6 @@
 package com.billyluisneedham.taxassistant.expenses
 
+import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.every
 import io.mockk.mockk
@@ -44,6 +45,10 @@ class ExpenseRepositoryTest {
 
     @Test
     fun createExpenseCreatesExpenseInDatabase() = runBlocking {
+        coEvery {
+            mockDao.insert(expense)
+        } returns Unit
+
         expenseRepository.createExpense(expense)
 
         coVerify {
