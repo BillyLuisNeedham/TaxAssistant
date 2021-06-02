@@ -65,6 +65,7 @@ class TaxAssistantDatabaseTest {
         )
         invoiceDao.insert(invoice)
         val invoices = invoiceDao.getAll()
-        assertThat(invoices.contains(invoice), `is`(true))
+        val invoiceList = invoices.firstOrNull()
+        assertThat(invoiceList?.contains(invoice), `is`(true))
     }
 }
