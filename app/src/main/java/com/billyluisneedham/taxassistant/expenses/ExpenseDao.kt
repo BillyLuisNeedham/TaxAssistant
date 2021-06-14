@@ -2,7 +2,7 @@ package com.billyluisneedham.taxassistant.expenses
 
 import androidx.room.Dao
 import androidx.room.Query
-import com.billyluisneedham.taxassistant.data.BaseDao
+import com.billyluisneedham.taxassistant.database.BaseDao
 import kotlinx.coroutines.flow.Flow
 
 @Dao
