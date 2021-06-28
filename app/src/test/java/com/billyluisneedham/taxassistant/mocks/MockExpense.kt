@@ -1,4 +1,4 @@
-package com.billyluisneedham.taxassistant.testutils.mocks
+package com.billyluisneedham.taxassistant.mocks
 
 import com.billyluisneedham.taxassistant.expenses.Expense
 

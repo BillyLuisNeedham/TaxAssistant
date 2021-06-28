@@ -1,6 +1,6 @@
 package com.billyluisneedham.taxassistant.expenses
 
-import com.billyluisneedham.taxassistant.testutils.mocks.MockExpenseUnit
+import com.billyluisneedham.taxassistant.mocks.MockExpenseUnit
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.every

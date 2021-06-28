@@ -1,7 +1,7 @@
 package com.billyluisneedham.taxassistant.expenses.all
 
 import com.billyluisneedham.taxassistant.expenses.ExpenseRepository
-import com.billyluisneedham.taxassistant.testutils.mocks.MockExpenseUnit
+import com.billyluisneedham.taxassistant.mocks.MockExpenseUnit
 import io.mockk.every
 import io.mockk.mockk
 import kotlinx.coroutines.flow.flow
