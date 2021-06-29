@@ -1,13 +1,13 @@
-package com.billyluisneedham.taxassistant.data
+package com.billyluisneedham.taxassistant.database
 
 import android.content.Context
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.billyluisneedham.taxassistant.expenses.Expense
 import com.billyluisneedham.taxassistant.expenses.ExpenseDao
-import com.billyluisneedham.taxassistant.invoices.Invoice
 import com.billyluisneedham.taxassistant.invoices.InvoiceDao
+import com.billyluisneedham.taxassistant.testutils.mocks.MockExpense
+import com.billyluisneedham.taxassistant.testutils.mocks.MockInvoice
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.runBlocking
 import org.hamcrest.MatcherAssert.assertThat
@@ -39,14 +39,7 @@ class TaxAssistantDatabaseTest {
 
     @Test
     fun writeAndReadExpense() = runBlocking {
-        val expense = Expense(
-            expenseId = 1,
-            name = "test expense",
-            dateTimeStamp = 12345,
-            amount = 58.33,
-            receiptUrl = "www.test.com",
-            notes = "test notes"
-        )
+        val expense = MockExpense.expense
         expenseDao.insert(expense)
         val expenses = expenseDao.getAll()
         val expenseList = expenses.firstOrNull()
@@ -55,14 +48,7 @@ class TaxAssistantDatabaseTest {
 
     @Test
     fun writeAndReadInvoices() = runBlocking {
-        val invoice = Invoice(
-            invoiceId = 1,
-            refNumber = "test ref number",
-            nameOfPersonInvoiced = "test name",
-            invoiceDateTimeStamp = 12345,
-            amount = 58.33,
-            invoiceUrl = "www.test.com"
-        )
+        val invoice = MockInvoice.invoice
         invoiceDao.insert(invoice)
         val invoices = invoiceDao.getAll()
         val invoiceList = invoices.firstOrNull()

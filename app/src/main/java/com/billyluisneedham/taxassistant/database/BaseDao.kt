@@ -1,4 +1,4 @@
-package com.billyluisneedham.taxassistant.data
+package com.billyluisneedham.taxassistant.database
 
 import androidx.room.Delete
 import androidx.room.Insert

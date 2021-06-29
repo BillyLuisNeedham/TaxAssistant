@@ -1,5 +1,6 @@
 package com.billyluisneedham.taxassistant.expenses
 
+import com.billyluisneedham.taxassistant.mocks.MockExpenseUnit
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.every
@@ -15,14 +16,7 @@ import org.junit.Test
 class ExpenseRepositoryTest {
     private lateinit var expenseRepository: ExpenseRepository
     private val mockDao = mockk<ExpenseDao>()
-    private val expense = Expense(
-        expenseId = 1,
-        name = "test expense",
-        dateTimeStamp = 12345,
-        amount = 58.33,
-        receiptUrl = "www.test.com",
-        notes = "test notes"
-    )
+    private val expense = MockExpenseUnit.expense
 
     @Before
     fun setUp() {
