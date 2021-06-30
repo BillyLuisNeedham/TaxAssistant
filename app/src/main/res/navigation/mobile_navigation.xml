@@ -3,13 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
-
-    <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.billyluisneedham.taxassistant.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+    app:startDestination="@id/navigation_all_expenses">
 
     <fragment
         android:id="@+id/navigation_dashboard"
@@ -22,4 +16,8 @@
         android:name="com.billyluisneedham.taxassistant.ui.expenses.ExpensesFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_expenses" />
+    <fragment
+        android:id="@+id/navigation_all_expenses"
+        android:name="com.billyluisneedham.taxassistant.expenses.all.AllExpensesFragment"
+        android:label="@string/all_expenses" />
 </navigation>
