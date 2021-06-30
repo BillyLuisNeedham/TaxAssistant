@@ -1,10 +1,35 @@
 package com.billyluisneedham.taxassistant.expenses.all
 
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
+import com.billyluisneedham.taxassistant.databinding.FragmentRecyclerviewFabBinding
+import com.billyluisneedham.taxassistant.expenses.ExpenseAdapter
+import dagger.android.support.DaggerFragment
+import javax.inject.Inject
 
-class AllExpensesFragment: Fragment() {
+class AllExpensesFragment: DaggerFragment() {
 
+    private lateinit var adapter: ExpenseAdapter
+    private lateinit var binding: FragmentRecyclerviewFabBinding
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+    private val viewModel by lazy {
+        ViewModelProvider(this, viewModelFactory).get(AllExpensesViewModel::class.java)
+    }
 
-    private val viewModel by viewModels<AllExpensesViewModel>()
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        FragmentRecyclerviewFabBinding.inflate(inflater, container, false).apply {
+            lifecycleOwner = viewLifecycleOwner
+            binding = this
+        }
+
+        return binding.root
+    }
 }
