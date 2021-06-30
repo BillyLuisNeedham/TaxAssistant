@@ -6,19 +6,20 @@ import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import androidx.test.platform.app.InstrumentationRegistry
-import com.billyluisneedham.taxassistant.R
 import com.billyluisneedham.taxassistant.expenses.ExpenseRepository
+import com.billyluisneedham.taxassistant.testutils.mocks.MockExpense
+import io.mockk.every
 import io.mockk.mockk
+import kotlinx.coroutines.flow.flow
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
-class AllExpensesFragmentTest {
+class AllExpensesFragmentScenarioTest {
 
     companion object {
-        private const val ALL_EXPENSES_HEADER = R.string.all_expenses
+
     }
 
     private val mockExpenseRepository = mockk<ExpenseRepository>()
@@ -27,18 +28,29 @@ class AllExpensesFragmentTest {
 
     @Before
     fun setUp() {
-        allExpensesHeader = InstrumentationRegistry.getInstrumentation().targetContext.getString(
-            ALL_EXPENSES_HEADER
-        )
 
+    }
+
+    private fun setUpTestThatReturnsAnExpense() {
+        val flow = flow {
+            emit(listOf(MockExpense.expense))
+        }
+
+        every {
+            mockExpenseRepository.getAllExpenses()
+        } returns flow
+
+        launchFragmentInContainer<AllExpensesFragment>()
     }
 
     @Test
-    fun displaysCorrectHeader() {
-        launchFragmentInContainer<AllExpensesFragment>()
+    fun displaysNamesOfAllExpensesFetchedFromRepository_expenseExistsInRepository_namePropertyOfExpenseDisplayed() {
+        setUpTestThatReturnsAnExpense()
 
-        onView(withText(allExpensesHeader))
+        onView(withText(MockExpense.expense.name))
             .check(matches(isDisplayed()))
     }
+
+
 
 }
