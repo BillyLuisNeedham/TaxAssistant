@@ -30,6 +30,8 @@ class AllExpensesFragment: DaggerFragment() {
             binding = this
         }
 
+        binding.tvTEST.text = viewModel.someString
+
         return binding.root
     }
 }

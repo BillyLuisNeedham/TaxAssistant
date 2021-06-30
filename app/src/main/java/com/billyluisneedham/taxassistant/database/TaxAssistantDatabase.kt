@@ -15,7 +15,7 @@ abstract class TaxAssistantDatabase : RoomDatabase() {
     abstract fun getInvoiceDao(): InvoiceDao
 
     companion object {
-        private const val DATABASE_NAME = "Tax-Assistant-Database.db"
+        const val DATABASE_NAME = "Tax-Assistant-Database.db"
 
         @Volatile
         private var instance: TaxAssistantDatabase? = null
