@@ -12,5 +12,8 @@ class MockExpense {
             receiptUrl = "www.test.com",
             notes = "test notes"
         )
+
+        val listOfMockExpenses = listOf(expense, expense.copy(expenseId = 2))
+
     }
 }
